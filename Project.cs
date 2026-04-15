@@ -40,3 +40,18 @@ class Program
                 p2.DisplayProduct();
                 p3.DisplayProduct();
 
+                Console.Write("Enter product number: ");
+                if (!int.TryParse(Console.ReadLine(), out int choice))
+                {
+                Console.WriteLine("Invalid input.");
+                continue;
+                }
+
+                Console.Write("Enter quantity: ");
+                if (!int.TryParse(Console.ReadLine(), out int qty) || qty <= 0)
+                {
+                Console.WriteLine("Invalid quantity.");
+                continue;
+                }
+
+
