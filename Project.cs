@@ -52,4 +52,43 @@ if (!int.TryParse(Console.ReadLine(), out int qty) || qty <= 0)
     continue;
 }
 
+switch (choice)
+{
+    case 1:
+        if (qty > p1.Stock)
+        {
+            Console.WriteLine("Not enough stock.");
+            break;
+        }
+        qty1 += qty;
+        p1.Stock -= qty;
+        Console.WriteLine("Watemelon added to cart!");
+        break;
+
+    case 2:
+        if (qty > p2.Stock)
+        {
+            Console.WriteLine("Not enough stock.");
+            break;
+        }
+        qty2 += qty;
+        p2.Stock -= qty;
+        Console.WriteLine("Peach added to cart!");
+        break;
+
+    case 3:
+        if (qty > p3.Stock)
+        {
+            Console.WriteLine("Not enough stock.");
+            break;
+        }
+        qty3 += qty;
+        p3.Stock -= qty;
+        Console.WriteLine("Melon added to cart!");
+        break;
+
+    default:
+        Console.WriteLine("Invalid product.");
+        continue;
+}
 
