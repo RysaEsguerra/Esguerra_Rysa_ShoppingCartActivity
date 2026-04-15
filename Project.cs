@@ -27,4 +27,15 @@ class Program
         Product p3 = new Product { Id = 3, Name = "Melon", Price = 50, Stock = 5 };
 
         string nextCustomer = "Y";
+         int qty1 = 0, qty2 = 0, qty3 = 0;
+ double total = 0;
+ string again = "Y";
+
+ while (again == "Y")
+ {
+     Console.WriteLine("\n==== STORE MENU ====");
+     p1.Display();
+     p2.Display();
+     p3.Display();
+
 
