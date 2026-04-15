@@ -43,15 +43,71 @@ class Program
                 Console.Write("Enter product number: ");
                 if (!int.TryParse(Console.ReadLine(), out int choice))
                 {
-                Console.WriteLine("Invalid input.");
-                continue;
+                    Console.WriteLine("Invalid input.");
+                    continue;
                 }
 
                 Console.Write("Enter quantity: ");
                 if (!int.TryParse(Console.ReadLine(), out int qty) || qty <= 0)
                 {
-                Console.WriteLine("Invalid quantity.");
-                continue;
+                    Console.WriteLine("Invalid quantity.");
+                    continue;
                 }
 
+                switch (choice)
+                {
+                    case 1:
+                        if (p1.Stock == 0)
+                        {
+                            Console.WriteLine("Watermelon is out of stock.");
+                        }
+                        else if (qty > p1.Stock)
+                        {
+                            Console.WriteLine("Not enough stock.");
+                        }
+                        else
+                        {
+                            qty1 += qty;
+                            p1.Stock -= qty;
+                            Console.WriteLine("Watermelon added to cart!");
+                        }
+                        break;
 
+                    case 2:
+                        if (p2.Stock == 0)
+                        {
+                            Console.WriteLine("Peach is out of stock.");
+                        }
+                        else if (qty > p2.Stock)
+                        {
+                            Console.WriteLine("Not enough stock.");
+                        }
+                        else
+                        {
+                            qty2 += qty;
+                            p2.Stock -= qty;
+                            Console.WriteLine("Peach added to cart!");
+                        }
+                        break;
+
+                    case 3:
+                        if (p3.Stock == 0)
+                        {
+                            Console.WriteLine("Melon is out of stock.");
+                        }
+                        else if (qty > p3.Stock)
+                        {
+                            Console.WriteLine("Not enough stock.");
+                        }
+                        else
+                        {
+                            qty3 += qty;
+                            p3.Stock -= qty;
+                            Console.WriteLine("Melon added to cart!");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid product.");
+                        continue;
+                }
