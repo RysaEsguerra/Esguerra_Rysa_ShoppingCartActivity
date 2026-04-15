@@ -36,6 +36,20 @@ class Program
      Console.WriteLine("\n==== STORE MENU ====");
      p1.Display();
      p2.Display();
-     p3.Display();
+     p3.Display
+
+     Console.Write("Enter product number: ");
+if (!int.TryParse(Console.ReadLine(), out int choice))
+{
+    Console.WriteLine("Invalid input.");
+    continue;
+}
+
+Console.Write("Enter quantity: ");
+if (!int.TryParse(Console.ReadLine(), out int qty) || qty <= 0)
+{
+    Console.WriteLine("Invalid quantity.");
+    continue;
+}
 
 
