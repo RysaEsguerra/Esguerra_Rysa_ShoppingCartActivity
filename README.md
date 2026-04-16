@@ -1,20 +1,33 @@
 Project Description
-This is a console-based Shopping Cart System developed in C#. The program allows users to select products, input quantities, and simulate a simple shopping experience.
-The system checks for invalid inputs, ensures that the quantity does not exceed available stock, and updates the remaining stock after each purchase.
+This is a simple console-based Shopping Cart System created using C#.
+It allows users to choose products, enter quantity, and simulate a shopping process.
 
-Features
-Displays store menu with available products
-Accepts user input for product selection and quantity
-Uses int.TryParse() to validate numeric input
-Prevents invalid product numbers
-Prevents invalid or negative quantity
-Checks stock availability
-Deducts stock after purchase
-Allows adding multiple items in one transaction
-Displays receipt with item totals
-Computes total amount
-Applies 10% discount if total exceeds ₱5000
-Displays final total after discount
-Supports multiple customers
-Displays final remaining stock after all transactions
+The system also checks stock availability, validates input, and computes the total with discount.
 
+Products
+Watermelon
+Peach
+Melon
+
+ Features
+Display store menu
+Accept user input (product and quantity)
+Input validation using int.TryParse()
+Check stock availability
+Prevent buying more than available stock
+Handle out-of-stock products
+Add items to cart
+Deduct stock after purchase
+Display receipt
+Compute total and final total
+Apply 10% discount if total is 5000 or more
+Support multiple customers
+Show updated stock after checkout
+
+How to Run
+Open the project in Visual Studio
+Run the program
+Follow the instructions:
+Enter product number
+Enter quantity
+Choose to add more items or not
