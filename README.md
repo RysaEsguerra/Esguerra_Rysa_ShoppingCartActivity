@@ -31,3 +31,28 @@ Follow the instructions:
 Enter product number
 Enter quantity
 Choose to add more items or not
+
+AI Usage in This Project
+Where AI was used
+
+AI was used to help with:
+
+Understanding the structure of the program
+Writing the Product class and methods
+Input validation using int.TryParse
+Creating the flowchart
+Why AI was used
+
+AI was used to:
+
+Better understand C# concepts
+Fix errors and improve the logic
+Make the code simpler and easier to follow
+Example prompts
+"How to create a simple shopping cart in C#?"
+"How to validate user input in C#?"
+"How to apply discount if total is 5000 or more?"
+Changes made
+Simplified the code structure
+Adjusted logic to match the requirements
+Improved variable names and readability
