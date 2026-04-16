@@ -111,3 +111,56 @@ class Program
                         Console.WriteLine("Invalid product.");
                         continue;
                 }
+
+                Console.Write("Add more items? (Y/N): ");
+                again = Console.ReadLine().ToUpper();
+            }
+
+            double total = 0;
+
+            Console.WriteLine("\n=== RECEIPT ===");
+
+            if (qty1 > 0)
+            {
+                double sub = p1.GetTotal(qty1);
+                total += sub;
+                Console.WriteLine($"Watermelon x{qty1} = ₱{sub}");
+            }
+            if (qty2 > 0)
+            {
+            double sub = p2.GetTotal(qty2);
+            total += sub;
+            Console.WriteLine($"Peach x{qty2} = ₱{sub}");
+            }
+
+            if (qty3 > 0)
+            {
+            double sub = p3.GetTotal(qty3);
+            total += sub;
+            Console.WriteLine($"Melon x{qty3} = ₱{sub}");
+            }
+             Console.WriteLine("----------------------");
+             Console.WriteLine("Grand Total: ₱" + total);
+
+            double discount = 0;
+            if (total >= 5000)
+            {
+            discount = total * 0.10;
+            } 
+    
+            double finalTotal = total - discount
+                        Console.WriteLine("Discount: ₱" + discount);
+            Console.WriteLine("Final Total: ₱" + finalTotal);
+
+            Console.WriteLine("\n=== UPDATED STOCK ===");
+            p1.DisplayProduct();
+            p2.DisplayProduct();
+            p3.DisplayProduct();
+
+            Console.Write("\nNext customer? (Y/N): ");
+            nextCustomer = Console.ReadLine().ToUpper();
+        }
+
+        Console.WriteLine("\nStore closed.");
+    }
+}
