@@ -164,3 +164,32 @@ class Program
         Console.WriteLine("\nStore closed.");
     }
 }
+
+
+
+
+Enhance Shopping Cart Activity
+
+using System;
+using System.Collections.Generic;
+
+class Product
+{
+    public int Id;
+    public string Name;
+    public string Category;
+    public double Price;
+    public int Stock;
+
+    public Product(int id, string name, string category, double price, int stock)
+    {
+        Id = id;
+        Name = name;
+        Category = category;
+        Price = price;
+        Stock = stock;
+    }
+}
+
+
+
