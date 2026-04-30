@@ -168,10 +168,9 @@ class Program
 
 
 
-Enhance Shopping Cart Activity
+------------------Enhance Shopping Cart Activity-----------------
 
-using System;
-using System.Collections.Generic;
+    using System;
 
 class Product
 {
@@ -189,7 +188,23 @@ class Product
         Price = price;
         Stock = stock;
     }
+
+    public void DisplayProduct()
+    {
+        Console.WriteLine($"{Id}. {Name} - {Category} - ₱{Price} - Stock: {Stock}");
+    }
+
+    public bool HasEnoughStock(int qty)
+    {
+        return Stock >= qty;
+    }
+
+    public void DeductStock(int qty)
+    {
+        Stock -= qty;
+    }
 }
+
 
 
 
