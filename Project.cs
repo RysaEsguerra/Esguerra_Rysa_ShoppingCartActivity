@@ -416,6 +416,62 @@ class Program
      cartCount = 0;
      Console.WriteLine("Cart cleared.");
  }
+ static void Checkout()
+ {
+     double total = 0;
+
+     for (int i = 0; i < cartCount; i++)
+         total += cart[i].Subtotal();
+
+     double discount = total >= 5000 ? total * 0.10 : 0;
+     double final = total - discount;
+
+     double payment;
+     do
+     {
+         payment = ReadDouble("Enter payment: ");
+
+         if (payment < final)
+             Console.WriteLine("Insufficient payment.");
+     } while (payment < final);
+
+     double change = payment - final;
+
+     string receiptNo = receiptCounter.ToString("0000");
+     receiptCounter++;
+
+     Order o = new Order
+     {
+         ReceiptNo = receiptNo,
+         DateTime = DateTime.Now,
+         Items = cart,
+         ItemCount = cartCount,
+         GrandTotal = total,
+         Discount = discount,
+         FinalTotal = final,
+         Payment = payment,
+         Change = change
+     };
+
+     orders[orderCount++] = o;
+
+     Console.WriteLine("\n===== RECEIPT =====");
+     Console.WriteLine("Receipt No: " + o.ReceiptNo);
+     Console.WriteLine("Date: " + o.DateTime);
+
+     for (int i = 0; i < cartCount; i++)
+         Console.WriteLine($"{cart[i].Product.Name} x{cart[i].Quantity}");
+
+     Console.WriteLine($"Grand Total: ₱{total}");
+     Console.WriteLine($"Discount: ₱{discount}");
+     Console.WriteLine($"Final Total: ₱{final}");
+     Console.WriteLine($"Payment: ₱{payment}");
+     Console.WriteLine($"Change: ₱{change}");
+
+     cartCount = 0;
+
+     ShowLowStock();
+ }
 
 
 
