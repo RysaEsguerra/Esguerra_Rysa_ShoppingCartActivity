@@ -276,6 +276,147 @@ class Program
             else break;
         }
     }
+     static void ViewProducts()
+ {
+     Console.WriteLine("\nPRODUCT LIST:");
+     foreach (var p in products)
+         p.DisplayProduct();
+ }
+
+ static void SearchProduct()
+ {
+     Console.Write("Enter product name: ");
+     string search = Console.ReadLine().ToLower();
+
+     foreach (var p in products)
+     {
+         if (p.Name.ToLower().Contains(search))
+             p.DisplayProduct();
+     }
+ }
+
+ static void FilterCategory()
+ {
+     Console.Write("Enter category: ");
+     string cat = Console.ReadLine().ToLower();
+
+     foreach (var p in products)
+     {
+         if (p.Category.ToLower() == cat)
+             p.DisplayProduct();
+     }
+ }
+
+
+ static void AddToCart()
+ {
+     ViewProducts();
+
+     int id = ReadInt("Enter product ID: ", 1, products.Length);
+     Product selected = products[id - 1];
+
+     if (selected.Stock == 0)
+     {
+         Console.WriteLine("Out of stock.");
+         return;
+     }
+
+     int qty = ReadInt("Enter quantity: ", 1, selected.Stock);
+
+
+     int index = -1;
+     for (int i = 0; i < cartCount; i++)
+     {
+         if (cart[i].Product.Id == selected.Id)
+         {
+             index = i;
+             break;
+         }
+     }
+
+     if (index != -1)
+     {
+         cart[index].Quantity += qty;
+         Console.WriteLine("Cart updated.");
+     }
+     else
+     {
+         if (cartCount >= cart.Length)
+         {
+             Console.WriteLine("Cart is full.");
+             return;
+         }
+
+         cart[cartCount++] = new CartItem(selected, qty);
+         Console.WriteLine("Added to cart.");
+     }
+
+     selected.DeductStock(qty);
+
+     if (ReadYN("Add more? (Y/N): ") == "Y")
+         AddToCart();
+ }
+
+ static void CartMenu()
+ {
+     while (true)
+     {
+         Console.WriteLine("\nCART MENU");
+         Console.WriteLine("1. View Cart");
+         Console.WriteLine("2. Remove Item");
+         Console.WriteLine("3. Update Quantity");
+         Console.WriteLine("4. Clear Cart");
+         Console.WriteLine("5. Checkout");
+         Console.WriteLine("6. Back");
+
+         int c = ReadInt("Choose: ", 1, 6);
+
+         if (c == 1) ViewCart();
+         else if (c == 2) RemoveItem();
+         else if (c == 3) UpdateItem();
+         else if (c == 4) ClearCart();
+         else if (c == 5) { Checkout(); break; }
+         else break;
+     }
+ }
+
+ static void ViewCart()
+ {
+     double total = 0;
+
+     for (int i = 0; i < cartCount; i++)
+     {
+         Console.WriteLine($"{i + 1}. {cart[i].Product.Name} x{cart[i].Quantity} = ₱{cart[i].Subtotal()}");
+         total += cart[i].Subtotal();
+     }
+
+     Console.WriteLine("Subtotal: ₱" + total);
+ }
+
+ static void RemoveItem()
+ {
+     ViewCart();
+     int i = ReadInt("Item #: ", 1, cartCount) - 1;
+
+     cart[i] = cart[--cartCount];
+ }
+
+ static void UpdateItem()
+ {
+     ViewCart();
+
+     int i = ReadInt("Item #: ", 1, cartCount) - 1;
+     int qty = ReadInt("New qty: ", 1, cart[i].Product.Stock);
+
+     cart[i].Quantity = qty;
+ }
+
+ static void ClearCart()
+ {
+     cartCount = 0;
+     Console.WriteLine("Cart cleared.");
+ }
+
 
 
 
