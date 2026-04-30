@@ -158,5 +158,16 @@ Added structured receipt generation system
 Implemented low stock alert feature
 Improved code readability and modular design
 
+Git Commit History
+
+This project was developed incrementally with the following commits:
+
+Initial project setup for Shopping Cart System
+Add product management with category and stock tracking
+Implement cart system with add-to-cart functionality
+Add cart management menu (view, update, remove, clear cart)
+Implement checkout with payment validation and receipt generation
+Add stock deduction and low stock alert system
+Improve input validation and user interaction handling
 
 
