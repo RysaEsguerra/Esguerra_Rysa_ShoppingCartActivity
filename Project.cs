@@ -492,6 +492,46 @@ static void ShowLowStock()
             Console.WriteLine($"{p.Name} has only {p.Stock} left.");
     }
 }
+ static int ReadInt(string msg, int min, int max)
+ {
+     int x;
+     while (true)
+     {
+         Console.Write(msg);
+         if (int.TryParse(Console.ReadLine(), out x) && x >= min && x <= max)
+             return x;
+
+         Console.WriteLine("Invalid input.");
+     }
+ }
+
+ static double ReadDouble(string msg)
+ {
+     double x;
+     while (true)
+     {
+         Console.Write(msg);
+         if (double.TryParse(Console.ReadLine(), out x))
+             return x;
+
+         Console.WriteLine("Invalid input.");
+     }
+ }
+    static string ReadYN(string msg)
+    {
+        while (true)
+        {
+            Console.Write(msg);
+            string s = Console.ReadLine().ToUpper();
+
+            if (s == "Y" || s == "N")
+                return s;
+
+            Console.WriteLine("Enter only Y or N.");
+        }
+    }
+}
+
 
 
 
