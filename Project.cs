@@ -472,7 +472,26 @@ class Program
 
      ShowLowStock();
  }
+static void OrderHistory()
+{
+    Console.WriteLine("\nORDER HISTORY:");
 
+    for (int i = 0; i < orderCount; i++)
+    {
+        Console.WriteLine($"Receipt #{orders[i].ReceiptNo} - ₱{orders[i].FinalTotal}");
+    }
+}
+
+static void ShowLowStock()
+{
+    Console.WriteLine("\nLOW STOCK ALERT:");
+
+    foreach (var p in products)
+    {
+        if (p.Stock <= 5)
+            Console.WriteLine($"{p.Name} has only {p.Stock} left.");
+    }
+}
 
 
 
