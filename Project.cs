@@ -204,6 +204,78 @@ class Product
         Stock -= qty;
     }
 }
+class CartItem
+{
+    public Product Product;
+    public int Quantity;
+
+    public CartItem(Product p, int q)
+    {
+        Product = p;
+        Quantity = q;
+    }
+
+    public double Subtotal()
+    {
+        return Product.Price * Quantity;
+    }
+}
+
+class Order
+{
+    public string ReceiptNo;
+    public DateTime DateTime;
+    public CartItem[] Items;
+    public int ItemCount;
+    public double GrandTotal;
+    public double Discount;
+    public double FinalTotal;
+    public double Payment;
+    public double Change;
+}
+
+class Program
+{
+    static Product[] products = new Product[]
+    {
+        new Product(1,"Burger","Food",100,10),
+        new Product(2,"Mouse","Electronics",500,10),
+        new Product(3,"Keyboard","Electronics",800,10),
+        new Product(4,"T-Shirt","Clothing",300,10)
+    };
+
+    static CartItem[] cart = new CartItem[10];
+    static int cartCount = 0;
+
+    static Order[] orders = new Order[10];
+    static int orderCount = 0;
+
+    static int receiptCounter = 1;
+
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("\n===== MAIN MENU =====");
+            Console.WriteLine("1. View Products");
+            Console.WriteLine("2. Search Product");
+            Console.WriteLine("3. Filter Category");
+            Console.WriteLine("4. Add to Cart");
+            Console.WriteLine("5. Cart Menu");
+            Console.WriteLine("6. Order History");
+            Console.WriteLine("7. Exit");
+
+            int choice = ReadInt("Choose: ", 1, 7);
+
+            if (choice == 1) ViewProducts();
+            else if (choice == 2) SearchProduct();
+            else if (choice == 3) FilterCategory();
+            else if (choice == 4) AddToCart();
+            else if (choice == 5) CartMenu();
+            else if (choice == 6) OrderHistory();
+            else break;
+        }
+    }
 
 
 
